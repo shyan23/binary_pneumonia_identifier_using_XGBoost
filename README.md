@@ -6,6 +6,63 @@
 ![SHAP](https://img.shields.io/badge/Explainable-AI-purple)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
+## Full Workflow
+
+```mermaid
+flowchart TD
+    A[X-ray Image Input] --> B[Preprocessing Pipeline]
+
+    subgraph B [Advanced Image Processing]
+        B1[CLAHE Contrast Enhancement]
+        B2[Bilateral Filtering]
+        B3[Lung Segmentation]
+        B4[Suspicious Region Detection]
+        B1 --> B2 --> B3 --> B4
+    end
+
+    B --> C[Biomarker Extraction]
+
+    subgraph C [Feature Engineering]
+        C1[Texture Analysis - GLCM Features]
+        C2[Geometric Properties]
+        C3[Intensity Statistics]
+        C4[Region Characteristics]
+        C1 --> C2 --> C3 --> C4
+    end
+
+    C --> D[Machine Learning Model]
+
+    subgraph D [Optimized XGBoost Classifier]
+        D1[Hyperparameter Tuning]
+        D2[Stratified Cross-Validation]
+        D3[Class Imbalance Handling]
+        D1 --> D2 --> D3
+    end
+
+    D --> E[Prediction Results]
+    E --> F[Diagnosis: Normal / Pneumonia]
+    E --> G[Confidence Scoring]
+
+    D --> H[Explainable AI]
+
+    subgraph H [Dual-Layer Explanations]
+        H1[Visual Annotations - Highlighted Regions]
+        H2[Numeric Explanations - SHAP Feature Importance]
+        H1 --> H2
+    end
+
+    H --> I[Clinical Decision Support]
+
+    subgraph I [Production API]
+        I1[FastAPI Endpoints]
+        I2[Real-time Processing]
+        I3[Scalable Deployment]
+        I1 --> I2 --> I3
+    end
+
+
+```
+
 ## 🎯 Executive Summary
 
 **X-RAY VISION** is a cutting-edge medical AI system that delivers **82%+ accurate pneumonia detection** from chest X-rays with complete explainability. This production-ready solution combines advanced image processing with optimized machine learning to assist radiologists in making faster, more accurate diagnoses while providing transparent reasoning for each prediction.
