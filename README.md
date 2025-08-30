@@ -89,7 +89,7 @@ flowchart TD
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/binary_pneumonia_identifier_using_XGBoost.git
+git clone https://github.com/shyan23/binary_pneumonia_identifier_using_XGBoost
 cd binary_pneumonia_identifier_using_XGBoost
 
 # Install dependencies
