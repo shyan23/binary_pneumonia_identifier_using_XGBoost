@@ -65,13 +65,14 @@ flowchart TD
 
 ## 🎯 Executive Summary
 
-**X-RAY VISION** is a cutting-edge medical AI system that delivers **82%+ accurate pneumonia detection** from chest X-rays with complete explainability. This production-ready solution combines advanced image processing with optimized machine learning to assist radiologists in making faster, more accurate diagnoses while providing transparent reasoning for each prediction.
+**X-RAY VISION** is a cutting-edge medical AI system that delivers **81.7% accurate pneumonia detection** from chest X-rays with complete explainability. This production-ready solution combines advanced image processing with optimized machine learning to assist radiologists in making faster, more accurate diagnoses while providing transparent reasoning for each prediction.
 
 ## ✨ Key Innovations & Differentiators
 
 ### 🏆 Competition-Grade Performance
-- **82% Accuracy** on test sets 
-- **Precision-optimized** model reduces false positives in medical diagnosis
+- **81.7% Accuracy** on test sets (624 samples)
+- **Precision: 81.1%** | **Recall: 92.3%** | **F1-Score: 86.3%**
+- **High sensitivity** (92.3% recall) ensures minimal false negatives in pneumonia detection
 - **Robust feature engineering** with 16 clinically-relevant biomarkers
 
 ### 🔍 Dual-Layer Explainability (Industry First)
@@ -174,16 +175,49 @@ print(f"Diagnosis: {result['diagnosis']} ({result['confidence']:.1%} confidence)
 }
 ```
 
+## 📊 Model Performance Results
+
+### Final Test Set Evaluation (624 samples)
+
+| Metric | Score |
+|--------|-------|
+| **Accuracy** | **81.7%** |
+| **Precision** | **81.1%** |
+| **Recall** | **92.3%** |
+| **F1-Score** | **86.3%** |
+
+### Detailed Classification Report
+```
+               precision    recall  f1-score   support
+
+      Normal       0.83      0.64      0.72       234
+   Pneumonia       0.81      0.92      0.86       390
+
+    accuracy                           0.82       624
+   macro avg       0.82      0.78      0.79       624
+weighted avg       0.82      0.82      0.81       624
+```
+
+### Confusion Matrix
+![Confusion Matrix](confusion_matrix.png)
+
+### SHAP Feature Importance Analysis
+![SHAP Summary Plot](shap_summary_plot.png)
+
+*The SHAP plot shows the most important features contributing to pneumonia detection, with each point representing a sample and colors indicating feature values (red = high, blue = low).*
+
 ## 📁 Project Structure
 
 ```
 xray-vision/
 ├── main.py                 # FastAPI application with dual explanations
-├── train_model.py          # Advanced training pipeline with optimization
+├── train.py               # Advanced training pipeline with optimization
 ├── artifacts_v4/           # Saved models and scalers
 │   ├── cpu_optimized_model_v4.pkl
 │   ├── cpu_feature_scaler_v4.pkl
 │   └── best_params_v4.json
+├── confusion_matrix.png    # Model performance visualization
+├── shap_summary_plot.png   # Feature importance analysis
 ├── requirements.txt        # Production dependencies
 └── README.md              # This file
 ```

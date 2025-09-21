@@ -45,8 +45,8 @@ def load_model_assets():
     """Load the model, scaler, and SHAP explainer when the app starts."""
     print("   -> Loading model and scaler...")
     try:
-        model = joblib.load("cpu_optimized_model_v3.pkl")
-        scaler = joblib.load("cpu_feature_scaler_v3.pkl")
+        model = joblib.load("cpu_optimized_model_v4.pkl")
+        scaler = joblib.load("cpu_feature_scaler_v4.pkl")
     except FileNotFoundError:
         print("❌ CRITICAL ERROR: Model or scaler files not found.")
         exit()

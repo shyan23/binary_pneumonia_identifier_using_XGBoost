@@ -231,6 +231,7 @@ def comprehensive_model_evaluation(model, scaler, feature_names, test_df):
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
     plt.tight_layout()
+    plt.savefig('confusion_matrix.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 def interpret_model_with_shap(model, scaler, features_df):
@@ -243,7 +244,10 @@ def interpret_model_with_shap(model, scaler, features_df):
     shap_values = explainer.shap_values(X_sample_scaled)
     X_sample_scaled_df = pd.DataFrame(X_sample_scaled, columns=X.columns)
     print("   Displaying SHAP summary plot...")
-    shap.summary_plot(shap_values, X_sample_scaled_df, plot_type="dot", show=True)
+    plt.figure()
+    shap.summary_plot(shap_values, X_sample_scaled_df, plot_type="dot", show=False)
+    plt.savefig('shap_summary_plot.png', dpi=300, bbox_inches='tight')
+    plt.show()
 
 
 # ============================================================================
@@ -251,9 +255,9 @@ def interpret_model_with_shap(model, scaler, features_df):
 # ============================================================================
 def main():
     # --- Configuration ---
-    DATA_PATH = "chest_xray"
+    DATA_PATH = "chest_xray/chest_xray/"
     
-    print(f"\n🚀 RUNNING IN FAST TRAINING MODE.")
+    print(f"\ RUNNING IN FAST TRAINING MODE.")
 
     # --- Step 1: Define the Proven Best Hyperparameters ---
     proven_best_params = {
